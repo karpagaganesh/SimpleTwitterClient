@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61286D3E1EA365DB004426AA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61286D3D1EA365DB004426AA /* LoginViewController.swift */; };
 		613F31DC1EA2ECAA00716C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613F31DB1EA2ECAA00716C5B /* AppDelegate.swift */; };
 		613F31DE1EA2ECAA00716C5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613F31DD1EA2ECAA00716C5B /* ViewController.swift */; };
 		613F31E11EA2ECAA00716C5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 613F31DF1EA2ECAA00716C5B /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		52EEFDFDC35A4B69DB21B63F /* Pods_SimpleTwitterClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleTwitterClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		61286D3D1EA365DB004426AA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		613F31D81EA2ECAA00716C5B /* SimpleTwitterClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleTwitterClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		613F31DB1EA2ECAA00716C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		613F31DD1EA2ECAA00716C5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				613F31E21EA2ECAA00716C5B /* Assets.xcassets */,
 				613F31E41EA2ECAA00716C5B /* LaunchScreen.storyboard */,
 				613F31E71EA2ECAA00716C5B /* Info.plist */,
+				61286D3D1EA365DB004426AA /* LoginViewController.swift */,
 			);
 			path = SimpleTwitterClient;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61286D3E1EA365DB004426AA /* LoginViewController.swift in Sources */,
 				613F31DE1EA2ECAA00716C5B /* ViewController.swift in Sources */,
 				613F31DC1EA2ECAA00716C5B /* AppDelegate.swift in Sources */,
 			);
@@ -379,6 +383,7 @@
 				613F31EC1EA2ECAA00716C5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
