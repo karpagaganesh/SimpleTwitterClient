@@ -29,7 +29,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1VH-eP-T3y"/>
+                                    <action selector="onLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rG8-TD-nyI"/>
                                 </connections>
                             </button>
                         </subviews>

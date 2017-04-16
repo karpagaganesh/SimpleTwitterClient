@@ -13,6 +13,8 @@
 		613F31E11EA2ECAA00716C5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 613F31DF1EA2ECAA00716C5B /* Main.storyboard */; };
 		613F31E31EA2ECAA00716C5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 613F31E21EA2ECAA00716C5B /* Assets.xcassets */; };
 		613F31E61EA2ECAA00716C5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 613F31E41EA2ECAA00716C5B /* LaunchScreen.storyboard */; };
+		61E1D2321EA402A6008F872E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E1D2311EA402A6008F872E /* Constants.swift */; };
+		61E1D2341EA40569008F872E /* TwitterRestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E1D2331EA40569008F872E /* TwitterRestClient.swift */; };
 		7EBD35D98138D028967E666D /* Pods_SimpleTwitterClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52EEFDFDC35A4B69DB21B63F /* Pods_SimpleTwitterClient.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,8 @@
 		613F31E21EA2ECAA00716C5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		613F31E51EA2ECAA00716C5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		613F31E71EA2ECAA00716C5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61E1D2311EA402A6008F872E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		61E1D2331EA40569008F872E /* TwitterRestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRestClient.swift; sourceTree = "<group>"; };
 		BD03F6F6679D0925F6A3B553 /* Pods-SimpleTwitterClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleTwitterClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleTwitterClient/Pods-SimpleTwitterClient.release.xcconfig"; sourceTree = "<group>"; };
 		D29DD6FF73595F27C55318FE /* Pods-SimpleTwitterClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleTwitterClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleTwitterClient/Pods-SimpleTwitterClient.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +83,8 @@
 				613F31E41EA2ECAA00716C5B /* LaunchScreen.storyboard */,
 				613F31E71EA2ECAA00716C5B /* Info.plist */,
 				61286D3D1EA365DB004426AA /* LoginViewController.swift */,
+				61E1D2311EA402A6008F872E /* Constants.swift */,
+				61E1D2331EA40569008F872E /* TwitterRestClient.swift */,
 			);
 			path = SimpleTwitterClient;
 			sourceTree = "<group>";
@@ -217,7 +223,9 @@
 			files = (
 				61286D3E1EA365DB004426AA /* LoginViewController.swift in Sources */,
 				613F31DE1EA2ECAA00716C5B /* ViewController.swift in Sources */,
+				61E1D2341EA40569008F872E /* TwitterRestClient.swift in Sources */,
 				613F31DC1EA2ECAA00716C5B /* AppDelegate.swift in Sources */,
+				61E1D2321EA402A6008F872E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

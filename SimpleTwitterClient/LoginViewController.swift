@@ -24,32 +24,20 @@ class LoginViewController: UIViewController {
     
 
     @IBAction func onLoginButton(_ sender: Any) {
-        let twitterClient = BDBOAuth1SessionManager(baseURL: NSURL(string: "https://api.twitter.com")! as URL!, consumerKey:"VghTOrO51Lr23CIcwZTgNAzaV",
-            consumerSecret:"x9IlA7FImUPxZY9GuTUufca5Rkj0cMvYMWJ4kBYq82yG7jKjiV")
+        Constants.TWITTER_CLIENT?.deauthorize()
         
-        twitterClient?.deauthorize()
-        
-        twitterClient?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: nil, scope: nil, success: { (requestToken: BDBOAuth1Credential!) -> Void in
-            print("I got a token")
-            print(requestToken)
-            let authTokenURL = "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.token!)"
-            print(authTokenURL)
-        
-            let url = NSURL(string : authTokenURL)!
-            UIApplication.shared.openURL(url as URL)
-            
-        }, failure: { (error: Error!) -> Void in
-            print("Error")
-        })
+        Constants.TWITTER_CLIENT?.fetchRequestToken(withPath: Constants.OAUTH_REQUEST_TOKEN,
+                                         method: Constants.GET,
+                                         callbackURL: URL(string: "twitterdemo://oauth")!,
+                                         scope: nil,
+                                         success: { (requestToken: BDBOAuth1Credential!) -> Void in
+                                            let authTokenURL = Constants.TWITTER_API_BASE + "/oauth/authorize?oauth_token=\(requestToken.token!)"
+                                        
+                                            let url = URL(string : authTokenURL)!
+                                            UIApplication.shared.openURL(url)
+                                            
+                                        }, failure: { (error: Error!) -> Void in
+                                            
+                                        })
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

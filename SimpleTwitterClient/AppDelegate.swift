@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import BDBOAuth1Manager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
@@ -40,7 +40,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        print (url.description)
+        let requestToken = BDBOAuth1Credential(queryString: url.query)
+        
+        Constants.TWITTER_CLIENT?.fetchAccessToken(withPath: Constants.OAUTH_ACCESS_TOKEN, method: Constants.POST, requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential!) -> Void in
+            
+            TwitterRestClient.verifyCredentials()
+            TwitterRestClient.retreiveHomeTimeline()
+            
+        }, failure: { (error: Error!) -> Void in
+            print (error)
+        })
+        return true
+    }
 
 }
 
