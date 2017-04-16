@@ -12,8 +12,7 @@ class TwitterRestClient: NSObject {
 
     static func verifyCredentials() -> Void {
         Constants.TWITTER_CLIENT?.get(Constants.API_VERIFY_CREDENTIALS, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any) -> Void in
-            let user = response as! NSDictionary
-            
+            let user = User(userDictionary: response as! NSDictionary)
         }, failure: {(task: URLSessionDataTask?, error: Error) -> Void in
             
         })
@@ -21,11 +20,12 @@ class TwitterRestClient: NSObject {
     
     static func retreiveHomeTimeline() -> Void {
         Constants.TWITTER_CLIENT?.get(Constants.API_HOME_TIMELINE, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any) -> Void in
-            let tweets = response as! [NSDictionary]
-            
+            let tweets = Tweet.retrieveTweets(dictionaries: response as! [NSDictionary])
+            for tweet in tweets{
+                print (tweet.text)
+            }
         }, failure: { (task: URLSessionDataTask?, error: Error) -> Void in
             
         })
-
     }
 }
