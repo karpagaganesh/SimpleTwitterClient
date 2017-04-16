@@ -12,8 +12,6 @@ import BDBOAuth1Manager
 class Constants: NSObject {
 
     static let TWITTER_API_BASE = "https://api.twitter.com"
-    static let TWITTER_CLIENT = BDBOAuth1SessionManager(baseURL: NSURL(string: TWITTER_API_BASE)! as URL!, consumerKey:"VghTOrO51Lr23CIcwZTgNAzaV",
-                                                        consumerSecret:"x9IlA7FImUPxZY9GuTUufca5Rkj0cMvYMWJ4kBYq82yG7jKjiV")
     
     static let API_VERIFY_CREDENTIALS = "1.1/account/verify_credentials.json"
     static let API_HOME_TIMELINE = "1.1/statuses/home_timeline.json"

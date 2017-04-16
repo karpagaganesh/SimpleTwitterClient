@@ -43,14 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         print (url.description)
-        let requestToken = BDBOAuth1Credential(queryString: url.query)
-        
-        Constants.TWITTER_CLIENT?.fetchAccessToken(withPath: Constants.OAUTH_ACCESS_TOKEN, method: Constants.POST, requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential!) -> Void in
-            TwitterRestClient.verifyCredentials()
-            TwitterRestClient.retreiveHomeTimeline()
-        }, failure: { (error: Error!) -> Void in
-            print (error)
-        })
+        let twitterClient = TwitterRestClient.singletonInstance
+        twitterClient.handleOpenUrl(url: url)
         return true
     }
 
