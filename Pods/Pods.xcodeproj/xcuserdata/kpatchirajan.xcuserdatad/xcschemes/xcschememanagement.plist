@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>KVLoading.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SimpleTwitterClient.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,7 +27,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>777777E725EEC8D5066EBC5AF123437B</key>
+		<key>68C743D73A37CA7014D64C5E60879A68</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C9D49E8ACEA8497269F8880B990BA347</key>
 		<dict>
 			<key>primary</key>
 			<true/>

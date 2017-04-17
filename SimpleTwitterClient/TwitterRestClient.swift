@@ -36,29 +36,42 @@ class TwitterRestClient: BDBOAuth1SessionManager {
         })
     }
     
+    func logout() -> Void {
+        User.currentUser = nil
+        deauthorize()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLogout"), object: nil)
+    }
+    
     func handleOpenUrl (url: URL){
         
         let requestToken = BDBOAuth1Credential(queryString: url.query)
         
         fetchAccessToken(withPath: Constants.OAUTH_ACCESS_TOKEN, method: Constants.POST, requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential!) -> Void in
-            self.loginSuccess?()
+            self.verifyCredentials(success: { (currentUSer: User) in
+                User.currentUser = currentUSer
+                self.loginSuccess?()
+            }, failure: { (error: Error) in
+                print (error.localizedDescription)
+            })
         }, failure: { (error: Error!) -> Void in
             self.loginFailure?(error)
         })
 
     }
     
-    func verifyCredentials() -> Void {
+    func verifyCredentials(success: @escaping (User) -> (), failure: @escaping (Error) -> ()) -> Void {
         get(Constants.API_VERIFY_CREDENTIALS, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any) -> Void in
             let user = User(userDictionary: response as! NSDictionary)
+            success(user)
         }, failure: {(task: URLSessionDataTask?, error: Error) -> Void in
-            
+            failure(error)
         })
     }
     
     func retreiveHomeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> () ) -> Void {
         get(Constants.API_HOME_TIMELINE, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any) -> Void in
             let tweets = Tweet.retrieveTweets(dictionaries: response as! [NSDictionary])
+            print("New Tweets")
             success(tweets)
         }, failure: { (task: URLSessionDataTask?, error: Error) -> Void in
             failure(error)

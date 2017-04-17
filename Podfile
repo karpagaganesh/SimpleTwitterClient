@@ -6,7 +6,7 @@ target 'SimpleTwitterClient' do
   use_frameworks!
   pod 'AFNetworking'
   pod 'BDBOAuth1Manager'
-
+  pod 'KVLoading'
   # Pods for SimpleTwitterClient
 
 end
