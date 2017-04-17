@@ -71,7 +71,6 @@ class TwitterRestClient: BDBOAuth1SessionManager {
     func retreiveHomeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> () ) -> Void {
         get(Constants.API_HOME_TIMELINE, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any) -> Void in
             let tweets = Tweet.retrieveTweets(dictionaries: response as! [NSDictionary])
-            print("New Tweets")
             success(tweets)
         }, failure: { (task: URLSessionDataTask?, error: Error) -> Void in
             failure(error)
