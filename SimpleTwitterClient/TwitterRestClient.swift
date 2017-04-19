@@ -11,8 +11,9 @@ import BDBOAuth1Manager
 
 class TwitterRestClient: BDBOAuth1SessionManager {
     
-    static let singletonInstance = TwitterRestClient(baseURL: NSURL(string: Constants.TWITTER_API_BASE)! as URL!, consumerKey:"VghTOrO51Lr23CIcwZTgNAzaV",consumerSecret:"x9IlA7FImUPxZY9GuTUufca5Rkj0cMvYMWJ4kBYq82yG7jKjiV")!
+    static let singletonInstance = TwitterRestClient(baseURL: URL(string: Constants.TWITTER_API_BASE)!, consumerKey:"VghTOrO51Lr23CIcwZTgNAzaV",consumerSecret:"x9IlA7FImUPxZY9GuTUufca5Rkj0cMvYMWJ4kBYq82yG7jKjiV")!
     
+
     var loginSuccess: (() -> ())?
     var loginFailure: ((Error) -> ())?
     
@@ -75,5 +76,25 @@ class TwitterRestClient: BDBOAuth1SessionManager {
         }, failure: { (task: URLSessionDataTask?, error: Error) -> Void in
             failure(error)
         })
+    }
+    
+    func postTweet(status : String, success : @escaping (Tweet) -> (), failure : @escaping (Error) -> ()) {
+        verifyCredentials(success: { (user: User) in
+            
+            let params = ["status" : status]
+            
+            self.post(Constants.API_POST_STATUS, parameters: params, progress: nil, success: { (task: URLSessionDataTask, response: Any) -> Void in
+                if let dictionary = response as? NSDictionary {
+                    let tweet = Tweet(tweetDictionary: dictionary);
+                    success(tweet)
+                }
+            }, failure: {(task: URLSessionDataTask?, error: Error) -> Void in
+                failure(error)
+            })
+            
+        }) { (error: Error) in
+            failure(error)
+        }
+        
     }
 }

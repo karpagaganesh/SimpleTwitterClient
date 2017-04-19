@@ -53,19 +53,34 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let tweetViewController = segue.destination as! TweetViewController
-        let indexPath = tweetsTableView.indexPath(for: sender as! UITableViewCell)!
-        let tweet = self.tweets[indexPath.row]
-        let user = tweet.user
-        tweetViewController.twitterTextFieldString = tweet.text!
-        tweetViewController.createdTimeStampString = tweet.createdTimeStamp!
-    
-        tweetViewController.nameStr = user?.name
-        tweetViewController.twitterHandleString = "@"+(user?.screenName)!
-        tweetViewController.userImageURL = (user?.profileURL)!
-        tweetViewController.favouritesCount = tweet.favouritesCount
-        tweetViewController.reTweetCount = tweet.reTweetCount
+        print (segue.identifier)
+        if("tweetViewSegue" == segue.identifier!){
+            let tweetViewController = segue.destination as! TweetViewController
+            let indexPath = tweetsTableView.indexPath(for: sender as! UITableViewCell)!
+            let tweet = self.tweets[indexPath.row]
+            let user = tweet.user
+            tweetViewController.twitterTextFieldString = tweet.text!
+            tweetViewController.createdTimeStampString = tweet.createdTimeStamp!
+            
+            tweetViewController.nameStr = user?.name
+            tweetViewController.twitterHandleString = "@"+(user?.screenName)!
+            tweetViewController.userImageURL = (user?.profileURL)!
+            tweetViewController.favouritesCount = tweet.favouritesCount
+            tweetViewController.reTweetCount = tweet.reTweetCount
+        }
+        else if("newTweetSegue" == segue.identifier!){
+            let newTweetController = segue.destination as! NewTweetViewController
+            var currentUser = User.currentUser
+            var name = currentUser?.name!
+            var twitterHandle = currentUser?.screenName!
+            var profileURL = currentUser?.profileURL!
+            
+            newTweetController.nameStr = name
+            newTweetController.twitterHandleString = twitterHandle
+            newTweetController.userImageURL = profileURL
+        }
     }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return self.tweets.count;
     }

@@ -121,7 +121,7 @@
                                             <outlet property="tweetText" destination="tr4-aF-sGN" id="oVD-D4-Oyr"/>
                                             <outlet property="twitterHandleName" destination="GQ8-XZ-0IH" id="SLl-cc-GVa"/>
                                             <outlet property="userImage" destination="Dc4-mY-FSE" id="RO9-ut-vxd"/>
-                                            <segue destination="oaP-fw-1bi" kind="push" id="oSe-4n-X1i"/>
+                                            <segue destination="oaP-fw-1bi" kind="push" identifier="tweetViewSegue" id="oSe-4n-X1i"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -135,7 +135,11 @@
                                 <action selector="onLogout:" destination="H6m-U8-KuE" id="LzK-Ez-efd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="New" id="0h4-Xh-1Rp"/>
+                        <barButtonItem key="rightBarButtonItem" title="New" id="0h4-Xh-1Rp">
+                            <connections>
+                                <segue destination="qKy-5E-SO5" kind="push" identifier="newTweetSegue" id="eWg-nZ-4W9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tweetsTableView" destination="A82-f4-rLs" id="P1P-su-OIn"/>
@@ -199,7 +203,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zgB-tp-N9p" id="5hH-Mv-nb1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" text="retweetCountLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bs9-gb-U5b">
@@ -314,6 +318,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3oE-wl-8fH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1997.5" y="153.5"/>
+        </scene>
+        <!--New Tweet View Controller-->
+        <scene sceneID="bca-dI-bun">
+            <objects>
+                <viewController id="qKy-5E-SO5" customClass="NewTweetViewController" customModule="SimpleTwitterClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sBX-nj-3Ph"/>
+                        <viewControllerLayoutGuide type="bottom" id="WdB-Ev-dHI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LPY-X0-XtY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qk3-e8-8LQ">
+                                <rect key="frame" x="7" y="72" width="56" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0OB-z2-zXp">
+                                <rect key="frame" x="71" y="72" width="288" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxS-sj-xpB">
+                                <rect key="frame" x="71" y="95" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="51p-m6-LT2">
+                                <rect key="frame" x="7" y="135" width="358" height="180"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="r6a-hD-Y61">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="dco-kV-Olp">
+                            <connections>
+                                <action selector="cancelNewTweet:" destination="qKy-5E-SO5" id="e3D-P3-MaL"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="TiH-Hj-w13">
+                            <connections>
+                                <action selector="postTweet:" destination="qKy-5E-SO5" id="gMm-nj-erl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="name" destination="0OB-z2-zXp" id="9Af-RS-doq"/>
+                        <outlet property="tweetText" destination="51p-m6-LT2" id="dwK-ku-M1D"/>
+                        <outlet property="twitterHandle" destination="sxS-sj-xpB" id="JZl-bT-5zJ"/>
+                        <outlet property="userImage" destination="Qk3-e8-8LQ" id="myt-Sk-GMm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ow8-S5-jJ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2432.5" y="153.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fHj-Nv-VdI">
